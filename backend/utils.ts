@@ -11,7 +11,7 @@ export function getRandomOrder(numberOfDrivers: number): number[] {
 
 export function associateImageWithDriver(drivers): void{
     for (let i = 0; i < drivers.length; i++){
-        drivers[i]["url"] = `${drivers[i]["code"].toLowerCase()}.png`;
+        drivers[i]["imgUrl"] = `${drivers[i]["code"].toLowerCase()}.png`;
     }
 }
 

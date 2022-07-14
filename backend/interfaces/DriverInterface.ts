@@ -6,5 +6,5 @@ export interface Driver {
     country: string,
     team: string,
     place: number,
-    url: string
+    imgUrl: string
 }

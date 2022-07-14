@@ -29,7 +29,7 @@ function Drivers() {
     const driverList = drivers.length ? drivers.map((driver: Driver) => {
         return (
             <li className="collection-item avatar" key={driver.id}>
-                <img alt="The driver" className="circle" src={`http://localhost:3000/${driver.url}`} />
+                <img alt="The driver" className="circle" src={`http://localhost:3000/${driver.imgUrl}`} />
                 <b><span className="title">{`${driver.firstname} ${driver.lastname}`}</span></b>
                 <p>{`Team: ${driver.team}`} <br />
                     {`Current place: ${driver.place}`} <br />
