@@ -1,3 +1,5 @@
+import { Driver } from "./interfaces/DriverInterface";
+
 export function getRandomOrder(numberOfDrivers: number): number[] {
     const arr = new Array<number>();
     while (arr.length < numberOfDrivers) {
@@ -13,6 +15,6 @@ export function associateImageWithDriver(drivers): void{
     }
 }
 
-export function sortDrivers(drivers){
+export function sortDrivers(drivers): Driver[]{
     return drivers.sort((a, b) => a.place - b.place);
 }
