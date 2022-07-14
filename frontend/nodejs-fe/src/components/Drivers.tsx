@@ -17,19 +17,22 @@ function Drivers() {
     }, []);
     const driverList = drivers.length ? drivers.map((driver: Driver) => {
         return (
-            <div key={driver.id}>
-                <p>{`${driver.firstname} ${driver.lastname}`}</p>
-                <p>{driver.team}</p>
-                <p>{driver.place}</p>
-                <p>{driver.code}</p>
-                {/* TODO: import photo */}
-            </div>
+            <li className="collection-item avatar" key={driver.id}>
+                <img alt="The driver" className="circle" src={`http://localhost:3000/${driver.url}`} />
+                <b><span className="title">{`${driver.firstname} ${driver.lastname}`}</span></b>
+                <p>{`Team: ${driver.team}`} <br />
+                    {`Current place: ${driver.place}`} <br />
+                    {`Code: ${driver.code}`}
+                </p>
+                {driver.place === 1 ? null : <button className="waves-effect waves-light btn-small secondary-content">Overtake</button>}
+            </li>
         )
     }) : (<p>There are no drivers to show.</p>);
     return (
-        <div>
+        <ul className="collection">
             {driverList}
-        </div>
+
+        </ul>
     );
 }
 
