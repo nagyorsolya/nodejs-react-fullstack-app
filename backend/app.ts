@@ -31,3 +31,5 @@ app.use(morgan('dev'));
 app.get('/api/drivers', driverController.get_drivers);
 
 app.post('/api/drivers/:driverId/overtake', driverController.overtake_driver);
+
+app.post('/api/drivers/:driverId/overtaketo/:place', driverController.overtake_multiple_places);
