@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
+import { associateImageWithDriver } from './utils';
 export let drivers = require('./public/drivers.json');
 const driverController = require('./controllers/driverController');
 
@@ -13,6 +14,7 @@ export let driversWithPlaces;
 app.listen(port, () => {
   //saves to memory only once at startup
   driversWithPlaces = driverController.assign_random_places(drivers);
+  associateImageWithDriver(driversWithPlaces);
   return console.log(`Express is listening at http://localhost:${port}`);
 });
 
