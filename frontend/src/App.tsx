@@ -22,12 +22,12 @@ function App() {
 
   const overtake = (id: number) => {
     fetch(`http://localhost:3000/api/drivers/${id}/overtake`, {
-        method: 'POST'
+      method: 'POST'
     }).then(async (res) => {
-        const response = await res.json();
-        setDrivers(response);
+      const response = await res.json();
+      setDrivers(response);
     })
-}
+  }
 
   const onDragEnd = (result: DropResult) => {
     const { destination, draggableId, source } = result;
@@ -37,25 +37,23 @@ function App() {
     if (source.index === destination.index) {
       return;
     }
-    if (source.index < destination.index) {
-      //TODO: implement logic for dragging drive down the list
-      return;
-    } else {
-      fetch(`http://localhost:3000/api/drivers/${draggableId}/overtaketo/${destination.index + 1}`, {
-        method: 'POST'
+    fetch(`http://localhost:3000/api/drivers/${draggableId}/overtaketo/${destination.index + 1}`, {
+      method: 'POST'
+    })
+      .then(async (res) => {
+        const response = await res.json();
+        setDrivers(response);
       })
-        .then(async (res) => {
-          const response = await res.json();
-          setDrivers(response);
-        })
-    }
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <BrowserRouter >
         <Routes>
-          <Route path="/drivers" element={<Drivers drivers={drivers} overtake={overtake}/>} />
+          <Route path="/drivers" element={<Drivers drivers={drivers} overtake={overtake} />} />
         </Routes>
       </BrowserRouter>
     </DragDropContext>

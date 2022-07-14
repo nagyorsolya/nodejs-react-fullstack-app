@@ -32,25 +32,27 @@ const overtake_driver = (req, res): void => {
 };
 
 const overtake_multiple_places = (req, res): void => {
-    //what if they drag&drop it further down the list?
     const driverId: number = parseInt(req.params.driverId);
     const requestedPlace: number = parseInt(req.params.place);
     const driver: Driver = driversWithPlaces.find(driver => driver.id === driverId);
 
     if (driver) {
-        if (requestedPlace < driver.place) {
-            for (let i = 0; i < driversWithPlaces.length; i++) {
-                let currentDriver: Driver = driversWithPlaces[i];
+        for (let i = 0; i < driversWithPlaces.length; i++) {
+            let currentDriver: Driver = driversWithPlaces[i];
+            if (requestedPlace < driver.place) {
                 //people being overtaken are assigned places further behind
                 if (currentDriver.place < driver.place && currentDriver.place >= requestedPlace) {
                     currentDriver.place++;
                 }
+            } else {
+                //people overtaking are assigned places further along
+                if (currentDriver.place > driver.place && currentDriver.place <= requestedPlace) {
+                    currentDriver.place--;
+                }
             }
-            driver.place = requestedPlace;
-            res.status(200).send(sortDrivers(driversWithPlaces));
-        } else {
-            //TBD
         }
+        driver.place = requestedPlace;
+        res.status(200).send(sortDrivers(driversWithPlaces));
     } else {
         res.status(500).send('There is no such driver.');
     }
