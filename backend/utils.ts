@@ -9,6 +9,7 @@ export function getRandomOrder(numberOfDrivers: number): number[] {
 
 export function associateImageWithDriver(drivers): void{
     for (let i = 0; i < drivers.length; i++){
-        drivers[i]["url"] = drivers[i]["code"].toLowerCase() + ".png";
+        //TODO: when fe app is ready, specify the route
+        drivers[i]["url"] = `${drivers[i]["code"].toLowerCase()}.png`;
     }
 }
