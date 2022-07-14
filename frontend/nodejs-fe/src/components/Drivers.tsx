@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { Driver } from '../interfaces/DriverInterface';
 
 function Drivers() {
@@ -15,6 +16,16 @@ function Drivers() {
                 console.log(error);
             });
     }, []);
+
+    const overTake = (id: number) => {
+        fetch(`http://localhost:3000/api/drivers/${id}/overtake`, {
+            method: 'POST'
+        }).then(async (res) => {
+            const response = await res.json();
+            setDrivers(response);
+        })
+    }
+
     const driverList = drivers.length ? drivers.map((driver: Driver) => {
         return (
             <li className="collection-item avatar" key={driver.id}>
@@ -24,14 +35,13 @@ function Drivers() {
                     {`Current place: ${driver.place}`} <br />
                     {`Code: ${driver.code}`}
                 </p>
-                {driver.place === 1 ? null : <button className="waves-effect waves-light btn-small secondary-content">Overtake</button>}
+                {driver.place === 1 ? null : <button className="waves-effect waves-light btn-small secondary-content" onClick={() => overTake(driver.id)}>Overtake</button>}
             </li>
         )
     }) : (<p>There are no drivers to show.</p>);
     return (
         <ul className="collection">
             {driverList}
-
         </ul>
     );
 }
