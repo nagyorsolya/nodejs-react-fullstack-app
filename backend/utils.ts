@@ -13,3 +13,7 @@ export function associateImageWithDriver(drivers): void{
         drivers[i]["url"] = `${drivers[i]["code"].toLowerCase()}.png`;
     }
 }
+
+export function sortDrivers(drivers){
+    return drivers.sort((a, b) => a.place - b.place);
+}

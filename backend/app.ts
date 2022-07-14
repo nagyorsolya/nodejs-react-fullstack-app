@@ -26,8 +26,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 //routes
-app.get('/', driverController.get_drivers);
+app.get('/api/drivers', driverController.get_drivers);
 
-app.post('/', (req, res) => {
-  res.send('Sending data.');
-});
+app.post('/api/drivers/:driverId/overtake', driverController.overtake_driver);
