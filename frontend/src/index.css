@@ -4,3 +4,12 @@
   border: 1px solid black;
   margin-left: 10px;
 }
+
+.collection {
+  width: 50%;
+  margin: 10px auto;
+}
+
+nav {
+  background-color: rgb(38,166,154);
+}
