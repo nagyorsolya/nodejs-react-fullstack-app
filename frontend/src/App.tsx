@@ -6,7 +6,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Drivers />} />
+        <Route path="/drivers" element={<Drivers />} />
       </Routes>
     </BrowserRouter>
 

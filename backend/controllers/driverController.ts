@@ -17,13 +17,13 @@ const get_drivers = (req, res): void => {
 
 const overtake_driver = (req, res): void => {
     const driverId: number = parseInt(req.params.driverId);
-
-    if (driverId === 1) {
+    let driverOvertaking: Driver = driversWithPlaces.find(driver => driver.id === driverId);
+    
+    if (driverOvertaking.place === 1) {
         res.status(403).send('Driver in the first place cannot overtake anyone.');
-    } else if (!driversWithPlaces.find(driver => driver.id === driverId)) {
+    } else if (!driverOvertaking) {
         res.status(500).send('There is no driver with the given ID.');
     } else {
-        let driverOvertaking: Driver = driversWithPlaces.find(driver => driver.id === driverId);
         let driverToOvertake: Driver = driversWithPlaces.find(driver => driver.place === driverOvertaking.place - 1);
         driverOvertaking.place--;
         driverToOvertake.place++;
