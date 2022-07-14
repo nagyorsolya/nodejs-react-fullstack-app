@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Driver } from '../interfaces/DriverInterface';
 
-function Drivers() {
+const Drivers: React.FC = () => {
 
     const [drivers, setDrivers] = useState([]);
 

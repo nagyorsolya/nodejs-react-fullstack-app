@@ -4,12 +4,11 @@ import Drivers from './components/Drivers';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <Routes>
         <Route path="/drivers" element={<Drivers />} />
       </Routes>
     </BrowserRouter>
-
   );
 }
 
