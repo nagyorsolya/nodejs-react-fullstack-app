@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { useState, useEffect } from 'react';
 
+import './index.css';
+
 import Drivers from './components/Drivers';
 import { Driver } from './interfaces/DriverInterface';
 
