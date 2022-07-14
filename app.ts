@@ -2,13 +2,17 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
+export let drivers = require('./public/drivers.json');
 const driverController = require('./controllers/driverController');
-
 
 const app = express();
 const port = 3000;
 
+export let driversWithPlaces;
+
 app.listen(port, () => {
+  //saves to memory only once at startup
+  driversWithPlaces = driverController.assign_random_places(drivers);
   return console.log(`Express is listening at http://localhost:${port}`);
 });
 
@@ -16,7 +20,6 @@ app.listen(port, () => {
 app.use(cors());
 app.use(express.json());
 app.options('*', cors());
-app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
