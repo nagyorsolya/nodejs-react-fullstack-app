@@ -1,7 +1,5 @@
 # Running the Node.js - React.js full-stack app:
 
-## Available Scripts
-
 ## Backend
 After cloning the repository, please at the first start up, cd into the backend folder and run: 
 
