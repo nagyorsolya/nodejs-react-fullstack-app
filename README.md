@@ -14,6 +14,7 @@ this will compile and run app.js.
 After cloning the repository, please at the first start up, cd into frontend and run 
 ### `npm install`
 
+If you get an error, try running npm install --legacy-peer-deps (version compatibility issues).
 Then, after every start/restart you can run in this same folder:
 ### `npm start`
 
