@@ -4,7 +4,7 @@ import morgan from 'morgan';
 
 import { Driver } from './interfaces/DriverInterface';
 import { associateImageWithDriver } from './utils';
-export let drivers = require('./public/drivers.json');
+import drivers from './public/drivers.json';
 import { PORT_NUMBER } from './constants';
 
 const driverController = require('./controllers/driverController');
