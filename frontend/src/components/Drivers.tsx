@@ -1,6 +1,7 @@
 import React from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 
+import { HOST_ROOT } from '../config';
 
 import { Driver } from '../interfaces/DriverInterface';
 
@@ -11,7 +12,7 @@ const Drivers: React.FC<{ drivers: Driver[], overtake: (id: number) => any }> = 
                 {
                     (provided) => (
                         <li className="collection-item avatar" key={driver.id} {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef} >
-                            <img alt="The driver" className="circle" src={`http://localhost:3000/${driver.imgUrl}`} />
+                            <img alt="The driver" className="circle" src={`${HOST_ROOT}/${driver.imgUrl}`} />
                             
                             <b><span className="title">{`${driver.firstname} ${driver.lastname}`}<img className="flag" alt="country flag" src={`https://countryflagsapi.com/png/${driver.country.toLocaleLowerCase()}`}/></span></b>
                             <p>{`Team: ${driver.team}`} <br />

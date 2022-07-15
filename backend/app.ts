@@ -5,18 +5,20 @@ import morgan from 'morgan';
 import { Driver } from './interfaces/DriverInterface';
 import { associateImageWithDriver } from './utils';
 export let drivers = require('./public/drivers.json');
+import { PORT_NUMBER } from './constants';
+
 const driverController = require('./controllers/driverController');
+const driverRoutes = require('./routes/driverRoutes');
 
 const app = express();
-const port: number = 3000;
 
 export let driversWithPlaces: Driver[];
 
-app.listen(port, () => {
+app.listen(PORT_NUMBER || 3000, () => {
   //saves to memory only once at startup
   driversWithPlaces = driverController.assign_random_places(drivers);
   associateImageWithDriver(driversWithPlaces);
-  return console.log(`Express is listening at http://localhost:${port}`);
+  return console.log(`Express is listening at ${PORT_NUMBER}`);
 });
 
 // middlewares
@@ -28,8 +30,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 //routes
-app.get('/api/drivers', driverController.get_drivers);
-
-app.post('/api/drivers/:driverId/overtake', driverController.overtake_driver);
-
-app.post('/api/drivers/:driverId/overtaketo/:place', driverController.overtake_multiple_places);
+app.use('/api/drivers', driverRoutes);
