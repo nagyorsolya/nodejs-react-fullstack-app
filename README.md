@@ -2,7 +2,7 @@
 
 ## Available Scripts
 
-Backend
+## Backend
 After cloning the repository, please at the first start up, cd into the backend folder and run: 
 
 ### `npm install`
@@ -12,7 +12,7 @@ Then, after every start/restart you can run in this same folder:
 ### `npm start`
 this will compile and run app.js. 
 
-Frontend
+## Frontend
 After cloning the repository, please at the first start up, cd into frontend and run 
 ### `npm install`
 
